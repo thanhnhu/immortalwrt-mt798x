@@ -179,8 +179,9 @@
 				read-only;
 			};
 
+			/* KeeneticOS identity (written from OpenWrt: multifw keenetic-init) */
 			partition@100000 {
-				label = "u-boot-env";
+				label = "U-Config";
 				reg = <0x100000 0x80000>;
 				read-only;
 			};
@@ -221,7 +222,7 @@
 
 			partition@580000 {
 				label = "ubi";
-				reg = <0x580000 0x7a80000>;
+				reg = <0x580000 0x5a80000>;
 				compatible = "linux,ubi";
 
 				volumes {
@@ -237,6 +238,13 @@
 						volname = "ubootenv2";
 					};
 				};
+			};
+
+			/* KeeneticOS (raw), managed from OpenWrt's multifw */
+			partition@6000000 {
+				label = "keenetic";
+				reg = <0x6000000 0x2000000>;
+				read-only;
 			};
 		};
 	};
